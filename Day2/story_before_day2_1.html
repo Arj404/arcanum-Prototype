@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <link
+            href="https://fonts.googleapis.com/css?family=Lato:100,300,600"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            type="text/css"
+            rel="stylesheet"
+            href="./story_before_day2_1.css"
+        />
+
+        <link
+            href="https://fonts.googleapis.com/css?family=Montserrat"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        />
+
+        <title>Arcanum</title>
+    </head>
+
+    <body>
+        <div class="container">
+            <button class="btn left" onclick="skip()">
+                Speed Up <i class="fa fa-angle-double-right"></i>
+            </button>
+            <a class="btn" href="password_crack_day2_q1.html">
+                <span class="hidden_text">Ctrl + Alt + T </span>
+            </a>
+        </div>
+        <div id="typedtext"></div>
+    </body>
+
+    <script>
+        // set up text to print, each item in array is new line
+        var aText = new Array(
+            "After you interrogate Jeff, you conclude that the people who were available at the scene were only the hotel manager and the waiter, John.The hotel manager was an old companion  of Jeff. Deep in his heart he still held grudges against him. The reason behind these grievances  was the success that Jeff achieved in a short span of time.  Both had started their career together but  later separated to pursue two entirely different fields. The reason behind Jeff's success  was his wife, Stacy who supported him in the all the ups and downs of life, even during the crucial point in his life when his company was at the verge of closure. On the other hand , the hotel manager had lost his wife long ago and missed her deeply. He believed that had she been alive, his life would have been completely  different. While talking to you Jeff tells you that after Stacy's death he had seen John  in the hallway, sighing and  talking to himself- 'What an odd day it was! The pretty woman who was so polite to me all these years is now dead. I wish I could have thanked her for returning my pocket knife to me that I had accidentally dropped in her room while she was alive.'",
+            "It's been a couple of days since the demise of Stacy but  Jeff continues to receive similar encrypted mails in a pattern. You analyze the pattern of the timing of the incoming mails and arrive at the conclusion that the next mail would be sent at 10:00 a.m. the next day. The next day you and Jeff go to the cafe to find only a  laptop  on the table and no one in sight. You ask Jeff for the laptop for further analysis . Jeff however refuses to handover the laptop to you saying it belongs to his wife. This leads to a heated argument between you and Jeff.Just then you see a man loitering around, seeing whom Jeff gets irritated. He shouts at him, 'How dare you come over here again! You should leave this place and should not be seen here '. You feel something is fishy and wish to interrogate the man . You leave the cafe giving some urgent work as an excuse to Jeff, taking the laptop along with you. You start following the man and stop him on his way, asking 'Who you are? And why was Jeff shouting at you?'.The man replies 'I used to work in that cafe and was there just to take away my belongings.''  He further adds, 'It was Jeff's wife who got me fired from my job just because I had spilled coffee on her gown by mistake. I hate her. By the way why are you asking me all this?'",
+            "You replied 'Jeff's wife is no more. I want you to come to my office tomorrow night to discuss about it in detail.' Upon listening this he gets tense and tells you that he has to leave for Vancouver by train the same evening. You note the contact details of that man and leave for your office."
+        );
+        var iSpeed = 35; // time delay of print out
+        var iIndex = 0; // start printing array at this posision
+        var iArrLength = aText[0].length; // the length of the text array
+        var iScrollAt = 20; // start scrolling up at this many lines
+
+        var iTextPos = 0; // initialise text position
+        var sContents = ""; // initialise contents variable
+        var iRow; // initialise current row
+        function skip() {
+            iSpeed = 0;
+            console.log(iSpeed);
+        }
+        function makevisible() {
+            console.log("im here");
+        }
+        function typewriter(callback) {
+            sContents = " ";
+            iRow = Math.max(0, iIndex - iScrollAt);
+            var destination = document.getElementById("typedtext");
+
+            while (iRow < iIndex) {
+                sContents += aText[iRow++] + "<br />";
+            }
+            destination.innerHTML =
+                sContents + aText[iIndex].substring(0, iTextPos) + "_";
+            if (iTextPos++ == iArrLength) {
+                iTextPos = 0;
+                iIndex++;
+                if (iIndex != aText.length) {
+                    iArrLength = aText[iIndex].length;
+                    setTimeout("typewriter()", 500);
+                }
+            } else {
+                setTimeout("typewriter()", iSpeed);
+            }
+        }
+
+        typewriter();
+    </script>
+</html>

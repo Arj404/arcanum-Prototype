@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <link
+            href="https://fonts.googleapis.com/css?family=Lato:100,300,600"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <link type="text/css" rel="stylesheet" href="story_before_q1.css" />
+
+        <link
+            href="https://fonts.googleapis.com/css?family=Montserrat"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        />
+        <link rel="icon" href="../icon.png">
+
+        <title>Arcanum</title>
+    </head>
+
+    <body>
+        <div class="container">
+            <button class="btn left" onclick="skip()">
+                Speed Up <i class="fa fa-angle-double-right"></i>
+            </button>
+            <a class="btn" href="email_q1.html">
+                <span class="hidden_text">Inspect Mails </span>
+                <i class="fa fa-arrow-right"></i>
+            </a>
+        </div>
+        <div id="typedtext"></div>
+    </body>
+    <script>
+        // set up text to print, each item in array is new line
+        var aText = new Array(
+            "On a fine Friday evening Jeff and his wife, Stacy went to dine out at Hilton Suites and ordered their favorite cuisine which their regular waiter 'John'  served them. He placed the dish on the table carefully between the fork and the knife. Just then the hotel manager came and said 'Sir, your dessert will be ready in 20 minutes!' .The couple had their dessert They waited at the reception until John came with the keys of room B-301. They took the keys and went to their room. Later, The man sent for a pack of cigarettes and a lighter along with some champagne and extra ice cubes",
+            "John arrived with the stuff ordered .When he entered the room he heard Jeff talking over the phone, regarding the cash that he was supposed to handover to his employee the next day. The cash was approximately $1 million!  While leaving, John accidently dropped a pocket knife. Stacy noticed it and told John to pick up the knife. He picked it up and left the room.The couple was left alone to celebrate their anniversary. Later that evening, Jeff went at the reception complaining about a leaking water tap. He demanded that his room be changed immediately as the hotel staff had committed a grave mistake and depicted their inefficiency in managing the clients. The hotel manager dealt with the situation calmly.",
+            "The same night Jeff's  wife was found dead, murdered in cold-blood in the hotel parking. Her face  was as white as snow- Just like the Khione of snow .Her beauty as sparkling as a hare with a snowshoe. The question which arises here is what caused her sudden death?",
+            "<br><u>After a few weeks of this incident Jeff started receiving encrypted mails from an anonymous source. He got scared and now in order to find out more about this unusual occurrence Jeff hires you as the detective.</u>"
+        );
+        var iSpeed = 35; // time delay of print out
+        var iIndex = 0; // start printing array at this posision
+        var iArrLength = aText[0].length; // the length of the text array
+        var iScrollAt = 20; // start scrolling up at this many lines
+
+        var iTextPos = 0; // initialise text position
+        var sContents = ""; // initialise contents variable
+        var iRow; // initialise current row
+        function skip() {
+            iSpeed = 0;
+            console.log(iSpeed);
+        }
+        function makevisible() {
+            console.log("im here");
+        }
+        function typewriter(callback) {
+            sContents = " ";
+            iRow = Math.max(0, iIndex - iScrollAt);
+            var destination = document.getElementById("typedtext");
+
+            while (iRow < iIndex) {
+                sContents += aText[iRow++] + "<br />";
+            }
+            destination.innerHTML =
+                sContents + aText[iIndex].substring(0, iTextPos) + "_";
+            if (iTextPos++ == iArrLength) {
+                iTextPos = 0;
+                iIndex++;
+                if (iIndex != aText.length) {
+                    iArrLength = aText[iIndex].length;
+                    setTimeout("typewriter()", 500);
+                }
+            } else {
+                setTimeout("typewriter()", iSpeed);
+            }
+        }
+
+        typewriter();
+    </script>
+</html>

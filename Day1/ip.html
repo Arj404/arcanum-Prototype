@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="“utf-8”" />
+        <link
+            href="https://fonts.googleapis.com/css?family=Montserrat"
+            rel="stylesheet"
+        />
+        <link type="text/css" rel="stylesheet" href="ip.css" />
+        <link rel="icon" href="../icon.png">
+        <title>Arcanum</title>
+    </head>
+    <body>
+        <section>
+            <button id="sign-out" >Sign Out</button>
+            <h4 style="text-align: center">Jeff tries to find the senders IP</h4>
+        </section>
+        <div id="t-top">&emsp;&emsp;&emsp;Jeff -- -bash -- 80x24<br /></div>
+        <section id="terminal">
+            <p id="t-content">
+                <strong>
+                    Last login: Mon Apr 15 16:18:33 on ttys000<br />
+                    (base) Jeffs-MacBook-Pro:~ jeffs$ show ip<br />
+                    &emsp;139.94.207.265<br />
+                    &emsp;281.96.227.143<br />
+                    &emsp;64.219.265.124<br />
+                    &emsp;36.296.151.129<br />
+                    &emsp;164.272.253.12<br />
+                    &emsp;77.171.281.40<br />
+                    &emsp;260.113.264.148<br />
+                    &emsp;142.195.86.289<br />
+                    &emsp;253.297.187.185<br />
+                    &emsp;163.24.222.296<br />
+                    &emsp;70.23.294.102<br />
+                    &emsp;80.292.59.100<br />
+                    &emsp;68.57.141.268<br />
+                    &emsp;274.8.76.226<br />
+                    &emsp;240.266.203.34<br />
+                    &emsp;42.195.298.180<br />
+                    &emsp;270.206.216.88<br />
+                    &emsp;237.3.277.180<br />
+                    &emsp;203.13.262.23<br />
+                    &emsp;262.49.216.20<br />
+                    &emsp;206.292.29.209<br />
+                    &emsp;55.191.85.287<br />
+                    &emsp;294.207.264.161<br />
+                    &emsp;217.143.120.263<br />
+                    &emsp;95.181.273.256<br />
+                    &emsp;124.274.278.19<br />
+                    &emsp;249.278.217.51<br />
+                    &emsp;70.69.268.50<br />
+                    &emsp;156.297.208.34<br />
+                    &emsp;217.233.277.148<br />
+                    &emsp;294.84.64.205<br />
+                    &emsp;286.66.256.208<br />
+                    &emsp;145.223.194.298<br />
+                    &emsp;. . . . . . . . . . . . . .<br />
+                    &emsp;. . . . . . . . . . . . . .<br />
+                    &emsp;. . . . . . . . . . . . . .<br />
+                    &emsp;. . . . . . . . . . . . . .<br />
+                    &emsp;. . . . . . . . . . . . . .<br />
+                    &emsp;. . . . . . . . . . . . . .<br />
+                    &emsp;. . . . . . . . . . . . . .<br />
+                    &emsp;. . . . . . . . . . . . . .<br />
+                    &emsp;. . . . . . . . . . . . . .<br /><br /><br />&emsp;
+                </strong>
+            </p>
+        </section>
+        <section id="file">
+            <h4 style="text-align: center">Whoa!! those are lots of IPs</h4>
+            <button style="margin-bottom: 10px;">
+                <a href="./data.txt" download><h3>Download the file</h3></a>
+            </button>
+            <input
+                id="answer_submission"
+                placeholder="Enter the correct ip"
+                style="text-align: center"
+            />
+            <button id="button1" style="margin-top: 10px;"><a><h3>Submit</h3></a></button>
+        </section>
+        <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
+        <script src="../registration/firebaseconfig.js"></script>
+        <script src="../registration/firebaseVerify.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script src="./ip.js"></script>
+        <script src="../score.js"></script>
+        <script src="logout.js"></script>
+    </body>
+</html>

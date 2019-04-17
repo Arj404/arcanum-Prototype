@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Finished</title>
+    </head>
+    <body>
+        <p>
+            You made it past day 1.. great effort!
+        </p>
+        <p id="scoreDisp">Your Score is :</p>
+    </body>
+    <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
+    <script src="./registration/firebaseconfig.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="finish_day1.css" />
+    <link rel="icon" href="icon.png">
+
+    <script>
+        firebase.auth().onAuthStateChanged(function(user) {
+            window.user = user;
+            if (user) {
+                console.log("signed in");
+            } else {
+                console.log("signed out");
+            }
+            var mydiv = document.querySelector("#scoreDisp");
+            var atag = document.createElement("a");
+
+            //
+            ref = firebase.database().ref("scores");
+            // ref.once("value", function(snap) {
+            //     if (!snap.hasChild(user.uid)) {
+            //         console.log("yay");
+            //         // ref.push(dataScore);
+            //     } else {
+            //         console.log("lol");
+            //     }
+            // });
+            ref.orderByChild("uid")
+                .equalTo(user.uid)
+
+                .once("value", res => {
+                    res.forEach(element => {
+                        score = element.val().score;
+                        atag.innerHTML = score;
+                        mydiv.appendChild(atag);
+                    });
+                    // console.log("updated score");
+                });
+        });
+    </script>
+</html>
